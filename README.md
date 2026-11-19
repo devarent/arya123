@@ -998,5 +998,5 @@ Materi Part 2 melengkapi Part 1:
 </details>
 
 <div align="center">
-<sub>Part of <a href="https://github.com/aryafatthurahman4-collab">@aryafatthurahman4-collab</a> â€” hands-on engineering, built and documented in the open.</sub>
+<sub>Part of <a href="https://github.com/aryafatthurahman4-collab">@aryafatthurahman4-collab</a> - hands-on engineering, built and documented in the open.</sub>
 </div>
