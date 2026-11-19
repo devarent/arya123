@@ -29,6 +29,27 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  preflight:
+    name: Check deployment configuration
+    runs-on: ubuntu-latest
+    outputs:
+      enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - name: Check required secrets
+        id: check
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          if [ -n "$EC2_HOST" ] && [ -n "$EC2_USER" ] && [ -n "$EC2_SSH_KEY" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "Deployment secrets detected."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Deploy skipped::EC2_HOST, EC2_USER, or EC2_SSH_KEY is not configured. Add them in Settings > Secrets and variables > Actions to enable deployment."
+          fi
+
   build:
     name: Build & push image
     runs-on: ubuntu-latest
@@ -81,18 +102,13 @@ jobs:
     name: Deploy via SSH
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: build
+    needs: [build, preflight]
+    if: needs.preflight.outputs.enabled == 'true'
     environment: production
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Guard secrets
-        run: |
-          test -n "${{ secrets.EC2_HOST }}" || { echo "EC2_HOST belum di-set"; exit 1; }
-          test -n "${{ secrets.EC2_USER }}" || { echo "EC2_USER belum di-set"; exit 1; }
-          test -n "${{ secrets.EC2_SSH_KEY }}" || { echo "EC2_SSH_KEY belum di-set"; exit 1; }
 
       - name: Deploy
         uses: appleboy/ssh-action@v1.2.0
