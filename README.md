@@ -1,4 +1,38 @@
 
+<!-- identity-block -->
+<div align="center">
+
+# arya123
+
+<sub>Portfolio dan halaman web pribadi.</sub>
+
+</div>
+
+## At a glance
+
+| Field | Detail |
+| --- | --- |
+| Repository | arya123 |
+| Primary language | HTML |
+| Topics | css, html, personal, portfolio, web |
+| License | MIT |
+| Branch | main |
+| Maintainer | [@devarent](https://github.com/devarent) |
+
+## Overview
+
+arya123 is a hands-on repository focused on: Portfolio dan halaman web pribadi.. Primary language: HTML. Topics: css, html, personal, portfolio, web. The README below documents the project; use the table above for a quick overview.
+
+### Global references
+
+<div align="center">
+
+🇮🇸 Iceland &middot; 🇳🇿 New Zealand &middot; 🇨🇭 Switzerland &middot; 🇸🇮 Slovenia &middot; 🇮🇪 Ireland &middot; 🇦🇹 Austria &middot; 🇵🇹 Portugal &middot; 🇸🇬 Singapore &middot; 🇫🇮 Finland
+
+</div>
+
+---
+
 <!-- dbx-style-kit -->
 <div align="center">
 
